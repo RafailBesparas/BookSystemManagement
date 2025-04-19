@@ -1,53 +1,25 @@
-🗂️ Phase 1: Set Up Base Architecture
-Technologies:
+# 📚 Book Management System (JavaFX + SQLite)
 
-JavaFX for the GUI
+A desktop-based application to manage a collection of books using JavaFX and SQLite. Supports adding, editing, deleting, and viewing books via a modern GUI.
 
-SQLite (via JDBC) for database
+---
 
-MVC pattern: model (Book), view (GUI), controller (logic)
+## 🚀 Features
 
-🔧 Phase 2: Book Features (Core Functionality)
-✅ CRUD (Create, Read, Update, Delete)
-Each book will have:
+- ✅ Add, edit, delete book entries
+- ✅ View books in a JavaFX TableView
+- ✅ Persistent storage with SQLite
+- ✅ Tracks title, author, ISBN, genre, and read/unread status
+- ✅ Modal dialog forms for clean data entry
+- ✅ Refreshable and interactive UI
 
-Title (String)
+---
 
-Author (String)
+## 🏗️ Technologies Used
 
-ISBN (String)
+- Java 17+
+- JavaFX 21
+- SQLite (via `sqlite-jdbc`)
+- Maven (for build and dependency management)
 
-Genre (String)
-
-Read Status (Boolean)
-
-Date Added (LocalDate)
-
-✅ Search
-Search bar in the GUI
-
-Filter books by title, author, or ISBN
-
-✅ Sort
-Combo box: sort by title, date added, or author
-
-🗃️ Phase 3: Database Integration
-Use SQLite to persist book records
-
-Create a BookDAO (Data Access Object) for all DB operations
-
-Store books in a table books with appropriate columns
-
-🖼️ Phase 4: GUI Design (JavaFX)
-Main View:
-TableView to list books
-
-Buttons: Add Book, Edit, Delete, Refresh
-
-Search Bar + Filter Dropdown
-
-Status/Log label
-
-Dialog Windows:
-Add/Edit Book pop-up with form fields
-
+---
