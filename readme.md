@@ -23,3 +23,46 @@ A desktop-based application to manage a collection of books using JavaFX and SQL
 - Maven (for build and dependency management)
 
 ---
+
+🧪 Usage
+Click Add to enter new book information.
+
+Select a book and click Edit to update it.
+
+Select a book and click Delete to remove it.
+
+Click Refresh to reload the data from the database.
+
+Each book contains:
+
+Title
+
+Author
+
+ISBN
+
+Genre
+
+Read/Unread status (checkbox)
+
+📂 Database
+SQLite file: books.db will be created automatically in the root directory.
+
+Table: books(id, title, author, isbn, genre, read)
+
+✅ TODO / Upcoming Features
+🔍 Search and filter functionality
+
+⬇️ Export/Import to/from JSON or CSV
+
+🧾 Sorting by title/author/date
+
+📁 Backup and restore
+
+🌐 Cloud sync or REST API
+
+🤝 Contributing
+Pull requests are welcome! For major changes, please open an issue first to discuss.
+
+📄 License
+This project is open source and available under the MIT License.
