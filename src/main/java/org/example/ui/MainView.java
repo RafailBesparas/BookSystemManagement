@@ -13,34 +13,60 @@ import javafx.stage.Stage;
 import org.example.dao.BookDAO;
 import org.example.model.Book;
 
+// Main User Interface for the Book Management Application
+// It includes the tables for listing books, and buttons, for performing CRUD operations.
+
 public class MainView {
+    // The layout container for your UI.
     private BorderPane root;
+    //Displays all books in a tabular form
     private TableView<Book> tableView;
+    //Holds the live data model for the UI
     private ObservableList<Book> bookList;
+    //Handles interaction with the database layer (fetching, inserting, deleting, updating books).
     private BookDAO dao;
 
     public MainView() {
+        //Begins the initialization of data access object and data list
         dao = new BookDAO();
         bookList = FXCollections.observableArrayList(dao.getAllBooks());
+
+        //Creates a table view and define columns
         tableView = new TableView<>();
 
+        // For each row in the TableView, display the book’s title in this column,
+        // and wrap it in a property so the UI can track changes
         TableColumn<Book, String> titleCol = new TableColumn<>("Title");
         titleCol.setCellValueFactory(cell -> new javafx.beans.property.SimpleStringProperty(cell.getValue().getTitle()));
 
+        //For each row in the TableView, display the book’s author in this column,
+        // and wrap it in a property so the UI can track changes
         TableColumn<Book, String> authorCol = new TableColumn<>("Author");
         authorCol.setCellValueFactory(cell -> new javafx.beans.property.SimpleStringProperty(cell.getValue().getAuthor()));
 
+        //For each row in the TableView, display the book’s ISBN in this column
+        //and wrap it in a property so the UI can track changes
         TableColumn<Book, String> isbnCol = new TableColumn<>("ISBN");
         isbnCol.setCellValueFactory(cell -> new javafx.beans.property.SimpleStringProperty(cell.getValue().getIsbn()));
 
+        //For each row in the TableView, display the book’s genre in this column,
+        // and wrap it in a property so the UI can track changes
         TableColumn<Book, String> genreCol = new TableColumn<>("Genre");
         genreCol.setCellValueFactory(cell -> new javafx.beans.property.SimpleStringProperty(cell.getValue().getGenre()));
 
+        //For each row in the TableView, display the book’s read in this column,
+        // and wrap it in a property so the UI can track changes
         TableColumn<Book, Boolean> readCol = new TableColumn<>("Read");
         readCol.setCellValueFactory(cell -> new javafx.beans.property.SimpleBooleanProperty(cell.getValue().isRead()));
 
+        // This line configures the TableView (tableView) to display columns for your book data.
         tableView.getColumns().addAll(titleCol, authorCol, isbnCol, genreCol, readCol);
+        // Binds the table to the data source.
+        //The TableView will automatically render the data and update itself if
+        // bookList changes (e.g. after adding/deleting books).
         tableView.setItems(bookList);
+
+        // From Here on are the buttons for CRUD operations.
 
         Button addButton = new Button("Add");
         addButton.setOnAction(e -> showBookDialog(null));
@@ -63,6 +89,8 @@ public class MainView {
         Button refreshButton = new Button("Refresh");
         refreshButton.setOnAction(e -> refreshTable());
 
+
+        //Show the buttons on the layout
         HBox buttons = new HBox(10, addButton, editButton, deleteButton, refreshButton);
         buttons.setPadding(new Insets(10));
 
